@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>花世界</title>
+</head>
+<!-- 网页logo -->
+<link rel="icon" href="./img/public/log.webp">
+<!-- 导入css链接 -->
+<link rel="stylesheet" href="./css/public.css">
+<!-- 导入css链接 -->
+<link rel="stylesheet" href="css/index.css" />
+
+<body>
+	<div class="wrapper"></div>
+	<header>
+		<!-- 导航部分开始 -->
+		<nav>
+			<ul>
+				<li><a href="">首页</a></li>
+				<li><a href="./html/type.html">品种</a></li>
+				<li><a href="./html/basket.html">花篮</a></li>
+				<li><a href="./html/market.html">花市</a></li>
+				<li><a href="./html/cake.html">蛋糕</a></li>
+				<li><a href="./html/consult.html">咨询</a></li>
+			</ul>
+		</nav>
+	</header>
+	<!-- 导航部分结束 -->
+
+	<!-- aside部分开始 -->
+	<aside>
+		<div id="player">
+			<div id="lyrics"></div>
+			<audio id="audio" controls autoplay loop></audio>
+		</div>
+
+		<!-- 歌词显示 -->
+		<script>
+			var song = {
+				// 歌名
+				title: "青花瓷",
+				// 歌手
+				artist: "周杰伦",
+				// 歌曲路径
+				src: "./video/qhc.mp3",
+				lyrics: []
+			};
+
+			var audio = document.getElementById("audio");
+			var lyricsContainer = document.getElementById("lyrics");
+
+			function parseIRCLyrics(lyricsData) {
+				var lines = lyricsData.split("\n");
+				// 正则表达式
+				var pattern = /^\[(\d{2}):(\d{2}).(\d{2})\]([\s\S]*)$/;
+
+				for (var i = 0; i < lines.length; i++) {
+					var line = lines[i].trim();
+					var match = line.match(pattern);
+
+					if (match) {
+						var minutes = parseInt(match[1]);
+						var seconds = parseInt(match[2]);
+						var milliseconds = parseInt(match[3]) * 10;
+						var time = minutes * 60 + seconds + milliseconds / 1000;
+						var text = match[4];
+
+						song.lyrics.push({
+							time: time,
+							text: text
+						});
+					}
+				}
+			}
+
+			function loadIRCLyrics() {
+				var xhr = new XMLHttpRequest();
+				xhr.onload = function () {
+					if (xhr.status === 200) {
+						var lyricsData = xhr.responseText;
+						parseIRCLyrics(lyricsData);
+					} else {
+						console.error("Failed to load lyrics file.");
+					}
+				};
+				xhr.open("GET", "./video/lyrics.irc", true);
+				xhr.send();
+			}
+
+			function displayLyrics() {
+				var currentTime = audio.currentTime;
+				lyricsContainer.innerHTML = "";
+
+				var currentLine = song.lyrics.find(function (line, index) {
+					var nextLine = song.lyrics[index + 1];
+					return currentTime >= line.time && (!nextLine || currentTime < nextLine.time);
+				});
+
+				var startIndex = Math.max(song.lyrics.indexOf(currentLine) - 1, 0);
+				var endIndex = Math.min(startIndex + 3, song.lyrics.length - 1);
+
+				for (var i = startIndex; i <= endIndex; i++) {
+					var line = song.lyrics[i];
+					var p = document.createElement("p");
+
+					if (line === currentLine) {
+						p.style.fontWeight = "bold";
+					}
+
+					p.textContent = line.text.replace(/\\(.)/g, "$1");
+					lyricsContainer.appendChild(p);
+				}
+			}
+
+			audio.src = song.src;
+			audio.setAttribute("title", song.title + " - " + song.artist);
+			audio.addEventListener("timeupdate", displayLyrics);
+			loadIRCLyrics();
+		</script>
+
+
+		<!-- 轮播区域 -->
+		<div id="slideshow">
+			<img src="img/index/1.jpg" alt="Image 1">
+			<img src="img/index/2.jpg" alt="Image 2">
+			<img src="img/index/3.jpg" alt="Image 3">
+			<img src="img/index/4.jpg" alt="Image 4">
+			<img src="img/index/5.jpg" alt="Image 5">
+		</div>
+
+		<!-- js部分 -->
+		<script>
+			var slideshow = document.getElementById("slideshow");
+			var currentIndex = 0;
+			var images = slideshow.getElementsByTagName("img");
+			setInterval(function () {
+				images[currentIndex].style.display = "none";
+				currentIndex = (currentIndex + 1) % images.length;
+				images[currentIndex].style.display = "block";
+				// 间隔2.5秒
+			}, 2500);
+		</script>
+
+		<!-- 花类展示 -->
+		<div class="show">
+			<ul>
+				<li>
+					<img src="./img/index/xiangrikui.jpg" />
+					<span>向日葵</span>
+				</li>
+				<li><img src="./img/index/yueji.jpg" />
+					<span>粉月季</span>
+				</li>
+				<li><img src="./img/index/lanhua.jpg" />
+					<span>小兰花</span>
+				</li>
+				<li><img src="./img/index/yinghua.jpg" />
+					<span>樱花</span>
+				</li>
+				<li><img src="./img/index/xunyicao.jpg" />
+					<span>薰衣草</span>
+				</li>
+				<li><img src="./img/index/hehua.jpg" />
+					<span>荷花</span>
+				</li>
+				<li><img src="./img/index/meigui.jpg" />
+					<span>玫瑰花</span>
+				</li>
+				<li><img src="./img/index/youcaihua.jpg" />
+					<span>油菜花</span>
+				</li>
+				<li><img src="./img/index/yujinxiang.jpg" />
+					<span>郁金香</span>
+				</li>
+			</ul>
+		</div>
+	</aside>
+	<!-- aside部分结束 -->
+
+	<!-- footer底部部分 -->
+	<footer>
+		服务热线: 0550-1818759 <span style="margin-left: 45px;">400-703-2221</span> <br />
+		<span>版权所有 中国花世界网 www.flowerworld.com</span>
+	</footer>
+</body>
+
+</html>

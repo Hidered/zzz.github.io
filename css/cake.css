@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* 整个页面背景图片 */
+    background-image: url(../img/public/background.jpg);
+}
+
+li {
+    /* 去除li标签前面的小圆点 */
+    list-style: none;
+}
+
+/* nav导航部分开始 */
+.nav {
+    /* 透明度 */
+    opacity: 0.7;
+    width: 100%;
+    /* 相对定位 */
+    position: relative;
+    top: 0;
+    /* 背景色 */
+    background-color: black;
+    /* 边框: 框厚度 实线 框为黑色 */
+    border-bottom: 1px solid black;
+}
+
+.nav ul {
+    /* 灵活布局 */
+    display: flex;
+}
+
+.nav ul li {
+    flex: 1;
+    /* 行高 */
+    line-height: 50px;
+    width: 20%;
+    /* 水平居中对齐 */
+    text-align: center;
+}
+
+.nav ul li a {
+    /* 去除文本下划线 */
+    text-decoration: none;
+    /* 字体颜色 */
+    color: white;
+    /* 字体大小 */
+    font-size: 20px;
+    /* 给字体加粗显示 */
+    font-weight: 700;
+}
+
+/* nav导航部分结束 */
+
+
+/* banner部分开始 */
+.banner {
+    /* 水平居中对齐 */
+    text-align: center;
+    /* 设置高度 */
+    height: 350px;
+    /* 设置外边距:上下外边距为10像素,左右自动 */
+    margin: 10px auto;
+}
+
+.banner img {
+    /* 设置图片宽度 */
+    width: 980px;
+    /* 设置图片高度 */
+    height: 350px;
+}
+
+.box {
+    /* 相对定位 */
+    position: relative;
+    /* 高度 */
+    width: 980px;
+    /* 设置外边距:上下0,左右自动 */
+    margin: 0 auto;
+}
+
+.box ul li {
+    /* 相对定位 */
+    position: relative;
+    /* 灵活显示 */
+    display: flex;
+}
+
+.box ul {
+    display: flex;
+}
+
+.box ul li img {
+    width: 95%;
+    position: relative;
+    display: flex;
+    flex: 0 0 20%;
+}
+
+.box ul li span {
+    /* 绝对定位 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 95%;
+    height: 100%;
+    /* 透明背景色 */
+    background-color: rgba(179, 243, 255, 0.5);
+    /* 设置字体颜色 */
+    color: white;
+    /* 字体大小 */
+    font-size: 20px;
+    /* 字体加粗显示 */
+    font-weight: 700;
+    /* 水平居中对齐 */
+    text-align: center;
+    /* 行高 */
+    line-height: 200px;
+}
+
+/* 鼠标悬浮显示字体 */
+.box ul li:hover span {
+    /* 将行级元素span转换为块级元素 */
+    display: block;
+}
+
+/* banner部分结束 */
+
+
+/* footer底部开始 */
+.footer {
+    /* 垂直居中对齐 */
+    align-items: center;
+    /* 水平居中对齐 */
+    text-align: center;
+    /* 设置高度 */
+    height: 52px;
+    /* 相对定位 */
+    position: relative;
+    /* 透明度 */
+    opacity: 0.9;
+    z-index: 2;
+    width: 100%;
+    /* 字体颜色 */
+    color: white;
+    /* 背景色 */
+    background-color: black;
+    /* 设置边框:厚度1像素 实线 颜色 */
+    border-top: 1px solid rgb(39, 50, 55);
+    /* 上外边距 */
+    margin-top: 50px;
+}
+
+/* footer底部结束 */

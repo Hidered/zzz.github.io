@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* 设置整个页面背景图片 */
+    background-image: url(../img/public/background.jpg);
+}
+
+li {
+    /* 去除li标签前面的小圆点 */
+    list-style: none;
+}
+
+/* nav导航部分开始 */
+nav {
+    /* 设置透明度 */
+    opacity: 0.7;
+    /* 宽度 */
+    width: 100%;
+    /* 相对定位 */
+    position: relative;
+    /* 设置顶部距离 */
+    top: 0;
+    /* 背景色 */
+    background-color: black;
+    /* 设置下边框: 厚度1像素 实线 颜色为黑色 */
+    border-bottom: 1px solid black;
+}
+
+nav ul {
+    /* 灵活展示 */
+    display: flex;
+}
+
+nav ul li {
+    flex: 1;
+    /* 行高 */
+    line-height: 50px;
+    /* 宽度 */
+    width: 20%;
+    /* 水平居中对齐 */
+    text-align: center;
+}
+
+nav ul li a {
+    /* 去除a标签文本下划线 */
+    text-decoration: none;
+    /* 设置字体颜色 */
+    color: white;
+    /* 设置字体大小 */
+    font-size: 20px;
+    /* 字体加粗显示 */
+    font-weight: 700;
+}
+
+/* nav导航部分结束 */
+
+
+/* banner部分开始 */
+.banner {
+    /* 垂直居中对齐 */
+    align-items: center;
+    /* 设置水平居中对齐 */
+    text-align: center;
+}
+
+.banner img {
+    /* 设置图片上外边距 */
+    margin-top: 70px;
+    /* 宽度 */
+    width: 400px;
+    /* 高度 */
+    height: 400px;
+}
+
+.banner span {
+    /* 设置字体大小 */
+    font-size: 22px;
+    /* 使字体加粗显示 */
+    font-weight: 700;
+    /* 设置字体颜色 */
+    color: white;
+}
+
+/* banner部分结束 */
